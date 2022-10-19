@@ -8,7 +8,7 @@
       }
     },
     "profiles": {
-      "CoreSession.Server": {
+      "CodeSession.Server": {
         "commandName": "Project",
         "dotnetRunMessages": true,
         "launchBrowser": true,
