@@ -14,9 +14,11 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddSingleton(services =>
 {
-    using var channel = GrpcChannel.ForAddress("https://localhost:7137");
+    var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
+    var backendUrl = services.GetRequiredService<NavigationManager>().BaseUri;
+    var channel = GrpcChannel.ForAddress(backendUrl, new GrpcChannelOptions { HttpClient = httpClient });
+
     return new WeatherForecasts.WeatherForecastsClient(channel);
 });
-
 
 await builder.Build().RunAsync();

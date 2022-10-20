@@ -36,6 +36,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<WeatherForecastGrpcService>();
