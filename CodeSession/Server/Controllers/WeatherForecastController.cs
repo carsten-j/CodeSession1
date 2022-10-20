@@ -18,7 +18,7 @@ namespace CodeSession.Server.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            return _forecastService.CreateForecasts(5);
+            return _forecastService.CreateForecasts(100);
         }
     }
 }
