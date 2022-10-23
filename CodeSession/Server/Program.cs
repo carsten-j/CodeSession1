@@ -9,6 +9,7 @@ builder.Services.AddScoped<IForecastService, ForecastService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
 //o =>
 //{
 //    o.ResponseCompressionLevel = CompressionLevel.Optimal;
@@ -20,6 +21,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MapGrpcReflectionService();
     app.UseWebAssemblyDebugging();
 }
 else
